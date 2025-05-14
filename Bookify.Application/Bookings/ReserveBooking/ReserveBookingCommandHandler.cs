@@ -18,7 +18,7 @@ internal sealed class ReserveBookingCommandHandler(
 {
     public async Task<Result<Guid>> Handle(ReserveBookingCommand request, CancellationToken cancellationToken)
     {
-        User? user = await userRepository.GetById(request.UserId, cancellationToken);
+        User? user = await userRepository.GetByIdAsync(request.UserId, cancellationToken);
 
         if (user is null)
         {
@@ -48,7 +48,7 @@ internal sealed class ReserveBookingCommandHandler(
 
         bookingRepository.Add(booking);
 
-        await unitOfWork.SaveChangesAsync();
+        await unitOfWork.SaveChangesAsync(cancellationToken);
 
         return booking.Id;
     }
