@@ -25,7 +25,7 @@ internal sealed class ReserveBookingCommandHandler(
             return Result.Failure<Guid>(UserErrors.NotFound);
         }
 
-        Apartment? apartment = await apartmentRepository.GetById(request.ApartmentId, cancellationToken);
+        Apartment? apartment = await apartmentRepository.GetByIdAsync(request.ApartmentId, cancellationToken);
 
         if(apartment is null)
         {
