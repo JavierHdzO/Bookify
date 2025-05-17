@@ -12,7 +12,7 @@ public sealed class Review : Entity
         Guid bookingId,
         Guid userId,
         Rating rating,
-        Comment document,
+        Comment comments,
         DateTime createdOnUtc) 
         : base(id) 
     {
@@ -20,7 +20,7 @@ public sealed class Review : Entity
         BookingId =  bookingId;
         UserId =  userId;
         Rating =  rating;
-        Document =  document;
+        Comment =  comments;
         CreatedOnUtc =  createdOnUtc;
     }
 
@@ -28,7 +28,7 @@ public sealed class Review : Entity
     public Guid BookingId { get; private set; }
     public Guid UserId { get; private set; }
     public Rating Rating { get; private set; }
-    public Comment Document { get; private set; }
+    public Comment Comment { get; private set; }
     public DateTime CreatedOnUtc { get; private set; }
 
     public static Result<Review> Create(
