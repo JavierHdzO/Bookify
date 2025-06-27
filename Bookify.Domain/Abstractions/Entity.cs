@@ -1,8 +1,12 @@
-﻿namespace Bookify.Domain.Abstractions;
+﻿using Bookify.SharedKernel;
+
+namespace Bookify.Domain.Abstractions;
 
 public abstract class Entity<TModel>     
     where TModel : class
 {
+    private readonly List<IDomainEvent> _domainEvents = [];
+
     protected Entity(Guid id)
     {
         Id = id;
@@ -64,4 +68,10 @@ public abstract class Entity<TModel>
         return !(left == right);
     }
 
+    public IReadOnlyList<IDomainEvent> GetDomainEvents() => [.. _domainEvents];
+
+    public void ClearDomainEvents() => _domainEvents.Clear();
+
+    protected void RaiseDomainEvent(IDomainEvent domainEvent) => _domainEvents.Add(domainEvent);
+ 
 }
