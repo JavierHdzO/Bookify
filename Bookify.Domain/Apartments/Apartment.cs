@@ -1,4 +1,5 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Common;
 
 namespace Bookify.Domain.Apartments;
 
