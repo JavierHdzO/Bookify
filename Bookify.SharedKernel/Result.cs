@@ -7,18 +7,18 @@ public class Result
     protected Result(bool isSuccess, Error error)
     {
 
-        if (!isSuccess && error != Error.None) 
+        if (!isSuccess && error == Error.None) 
         {
             throw new InvalidOperationException();
         }
 
-        if (isSuccess && error == Error.None) 
+        if (isSuccess && error != Error.None) 
         {
             throw new InvalidOperationException();
         }
 
         IsSuccess = isSuccess;
-        Error = error ?? throw new ArgumentNullException(nameof(error), "Error cannot be null");
+        Error = error;
     }
 
     public bool IsSuccess { get; }
