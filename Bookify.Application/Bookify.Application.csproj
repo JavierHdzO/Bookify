@@ -1,2 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Dapper" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bookify.Domain\Bookify.Domain.csproj" />
+    <ProjectReference Include="..\Bookify.SharedKernel\Bookify.SharedKernel.csproj" />
+  </ItemGroup>
 </Project>
