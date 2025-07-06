@@ -483,3 +483,4 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 .containers/
+/Bookify.Api/appsettings.json
