@@ -1,5 +1,6 @@
 ﻿using Bookify.Domain.Abstractions;
 using Bookify.Domain.Bookings;
+using Bookify.Domain.Reviews.Events;
 using Bookify.SharedKernel;
 
 namespace Bookify.Domain.Reviews;
