@@ -7,5 +7,5 @@ public sealed record ApartmentResponse
     public string Description { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public string Currency { get; set; } = string.Empty;
-    public AddressResponse Address { get; set; }
+    public AddressResponse Address { get; set; } = default!;
 }
