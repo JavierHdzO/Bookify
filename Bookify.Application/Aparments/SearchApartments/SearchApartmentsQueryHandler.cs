@@ -40,26 +40,30 @@ internal sealed class SearchApartmentsQueryHandler
         paramenters.Add("EndDate", request.EndDate);
         paramenters.Add("ActiveBookingStatuses", ActiveBookingStatuses);
 
-        const string sql = @"
-            SELECT 
-                a.id as Id, 
-                a.name as Name, 
-                a.description as Description, 
-                a.price_amount as Price, 
-                a.price_currency as Currency, 
-                a.address_contry as Country,
-                a.address_state as State,
-                a.address_zip_code as ZipCore,
-                a.address_city as City,
-                a.address_street as Street,
-            FROM Apartments AS a
-            WHERE NOT EXISTS (
-                SELECT 1 FROM Bookings AS b
-                WHERE b.ApartmentId = a.Id
-                AND b.StartDate < @EndDate
-                AND b.EndDate > @StartDate
-                AND b.Status = ANY(@ActiveBookingStatuses)
-            )";
+        const string sql = """
+            SELECT
+                a.id AS Id,
+                a.name AS Name,
+                a.description AS Description,
+                a.price_amount AS Price,
+                a.price_currency AS Currency,
+                a.address_country AS Country,
+                a.address_state AS State,
+                a.address_zip_code AS ZipCode,
+                a.address_city AS City,
+                a.address_street AS Street
+            FROM apartments AS a
+            WHERE NOT EXISTS
+            (
+                SELECT 1
+                FROM bookings AS b
+                WHERE
+                    b.apartment_id = a.id AND
+                    b.duration_start <= @EndDate AND
+                    b.duration_end >= @StartDate AND
+                    b.status = ANY(@ActiveBookingStatuses)
+            )
+            """;
 
         var apartments = await connection.QueryAsync<ApartmentResponse, AddressResponse, ApartmentResponse>(
             sql: sql,
