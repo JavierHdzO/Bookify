@@ -29,7 +29,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.ApplyMigrations();
+    await app.ApplyMigrationsAsync();
     
 }
 
