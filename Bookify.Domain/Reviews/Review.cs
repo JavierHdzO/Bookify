@@ -25,6 +25,10 @@ public sealed class Review : Entity<Review>
         CreatedAt = createdAt;
     }
 
+    private Review() 
+    {
+    }
+
     public Guid ApartmentId { get; private set; }
     public Guid BookingId { get; private set; }
     public Guid UserId { get; private set; }

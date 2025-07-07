@@ -12,6 +12,10 @@ public abstract class Entity<TModel>
         Id = id;
     }
 
+    protected Entity( )
+    {
+    }
+
     public Guid Id { get; init; }
 
     public bool IsTransient() => Object.Equals(Id, default(Guid));
