@@ -12,7 +12,7 @@ services:
     image: postgres:latest
     container_name: Bookify.Database
     environment:
-      - POSTGRES_DB=BOOKIFY
+      - POSTGRES_DB=bookify
       - POSTGRES_USER=postgres 
       - POSTGRES_PASSWORD=postgres
     volumes:
